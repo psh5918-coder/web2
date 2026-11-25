@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>지역별 CSV 추출</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="session.js" defer></script>
+  <script src="boundaries/regions.js" defer></script>
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body data-menu="extract">
+  <main class="page">
+    <nav aria-label="메인 메뉴"><a class="home-link" href="index.html">메인으로 돌아가기</a></nav>
+    <h1>지역별 CSV 추출</h1>
+    <div class="grid controls">
+      <section class="panel" aria-labelledby="upload-heading">
+        <h2 id="upload-heading">자료 선택</h2>
+        <label for="stations-file">주유소 자료</label>
+        <input id="stations-file" type="file" accept=".csv,text/csv" aria-describedby="stations-file-state">
+        <p id="stations-file-state" class="file-state" aria-live="polite"></p>
+        <label for="prices-file">판매가격 자료</label>
+        <input id="prices-file" type="file" accept=".csv,text/csv" aria-describedby="prices-file-state">
+        <p id="prices-file-state" class="file-state" aria-live="polite"></p>
+      </section>
+      <section class="panel blue" aria-labelledby="region-heading">
+        <h2 id="region-heading">지역 선택</h2>
+        <label for="province">시·도</label>
+        <select id="province" disabled><option value="">시·도를 선택하세요</option></select>
+        <label for="district">시·군·구</label>
+        <select id="district" disabled><option value="">전체</option></select>
+      </section>
+    </div>
+    <p id="status" class="status" role="status">주유소 자료와 판매가격 자료를 선택하세요.</p>
+    <details id="issues" class="panel issue-panel" hidden>
+      <summary id="issues-summary">파일 오류</summary>
+      <div id="issue-list" class="scrollbox"></div>
+    </details>
+    <section class="panel peach" aria-labelledby="results-heading">
+      <h2 id="results-heading">추출 결과</h2>
+      <dl class="results">
+        <div><dt>주유소</dt><dd id="station-count">—</dd></div>
+        <div><dt>판매가격</dt><dd id="price-count">—</dd></div>
+        <div><dt>판매가격 기간</dt><dd id="price-period">—</dd></div>
+      </dl>
+      <div class="actions">
+        <button id="save-stations" type="button" disabled>주유소 CSV 저장</button>
+        <button id="save-prices" type="button" disabled>판매가격 CSV 저장</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
