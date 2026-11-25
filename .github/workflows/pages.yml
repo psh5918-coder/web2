@@ -25,7 +25,7 @@ jobs:
       - name: Stage static assets
         run: |
           mkdir -p _site/boundaries
-          cp app/*.html app/*.css app/*.js _site/
+          cp app/*.html app/*.css app/*.js app/menu-shinchan.png _site/
           cp app/boundaries/*.js _site/boundaries/
       - uses: actions/upload-pages-artifact@v5
         with:

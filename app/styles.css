@@ -52,7 +52,7 @@ a { color: var(--navy); text-underline-offset: .2em; }
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-content: start;
-  gap: 1.6rem;
+  gap: .85rem;
   min-height: 14rem;
   color: var(--ink);
   text-decoration: none;
@@ -61,49 +61,37 @@ a { color: var(--navy); text-underline-offset: .2em; }
 .menu-card:hover { box-shadow: 6px 6px var(--ink); }
 .menu-card:hover h2 { text-decoration: underline; text-underline-offset: .2em; }
 .menu-card p { margin: 0; }
-.icon-disc {
-  position: relative;
-  width: 4rem;
-  height: 4rem;
-  display: grid;
-  place-items: center;
-  border: 2px solid var(--ink);
-  border-radius: 50%;
-  background: var(--light);
+.menu-sticker {
+  display: block;
+  width: 6rem;
+  height: 6rem;
+  object-fit: contain;
+  transform-origin: center 86%;
 }
-.icon-disc::after {
-  content: "";
-  position: absolute;
-  width: 12px;
-  height: 4px;
-  right: -7px;
-  top: 3px;
-  border-radius: 4px;
-  background: var(--coral);
-  transform: rotate(-36deg);
+
+@media (prefers-reduced-motion: no-preference) {
+  .sticker-jump { animation: sticker-jump .7s ease-in-out 2; }
+  .sticker-sway { animation: sticker-sway .8s ease-in-out .14s 2; }
+  .menu-card:is(:hover, :focus-visible, :active) .menu-sticker {
+    animation: sticker-cheer .65s ease-in-out;
+  }
 }
-.pump-icon {
-  position: relative;
-  width: 23px;
-  height: 29px;
-  margin-right: 7px;
-  border: 3px solid var(--navy);
-  border-radius: 4px 4px 1px 1px;
-  background: var(--peach);
+
+@keyframes sticker-jump {
+  35% { transform: translateY(-8px) rotate(-5deg); }
+  68% { transform: scale(1.05, .94); }
 }
-.pump-icon::before { content: ""; position: absolute; inset: 3px 2px auto; height: 7px; border-radius: 2px; background: var(--navy); }
-.pump-icon::after { content: ""; position: absolute; left: 100%; top: 9px; width: 10px; height: 15px; border: 3px solid var(--navy); border-left: 0; border-radius: 0 5px 5px 0; }
-.pin-icon {
-  width: 27px;
-  height: 27px;
-  margin-bottom: 6px;
-  border-radius: 50% 50% 50% 12%;
-  background: var(--navy);
-  transform: rotate(-45deg);
-  display: grid;
-  place-items: center;
+
+@keyframes sticker-sway {
+  28% { transform: rotate(-8deg); }
+  72% { transform: rotate(8deg); }
 }
-.pin-icon::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--light); }
+
+@keyframes sticker-cheer {
+  24% { transform: translateY(-9px) rotate(-8deg); }
+  56% { transform: translateY(-4px) rotate(8deg) scale(1.06); }
+  80% { transform: scale(1.04, .95); }
+}
 
 label { display: block; font-weight: 750; margin-top: .75rem; }
 input, select, button { font: inherit; }
